@@ -112,9 +112,21 @@ label {
 /* 特殊处理：单选框和复选框的label */
 input[type="radio"] + label,
 input[type="checkbox"] + label {
-    width: auto;
+    width: auto !important;
     font-weight: normal;
     margin-right: 20px;
+    display: inline-block;       /* 确保它是行内块 */
+    vertical-align: middle;      /* 关键：与前面的复选框垂直居中对齐 */
+    margin-left: 5px;            /* 与复选框之间留一点空隙 */
+    margin-bottom: 0;            /* 取消底部边距，防止错位 */
+}
+
+/* 确保复选框本身也垂直居中 */
+input[type="checkbox"],
+input[type="radio"] {
+    vertical-align: middle;
+    margin-right: 0;
+    margin-top: -2px;            /* 微调：有些浏览器复选框偏上，稍微往下拉一点 */
 }
 
 /* 所有输入框通用样式 */
@@ -257,6 +269,33 @@ form p {
     font-weight: bold;
     color: #2c3e50;
 }
+/* ========================================
+   登录页“记住我”专用样式
+   ======================================== */
+
+.checkbox-row {
+    display: flex;
+    align-items: center;       /* 垂直居中 */
+    justify-content: flex-start; /* 左对齐 */
+    margin-bottom: 20px;       /* 与下方按钮保持距离 */
+    /* 如果你希望它和输入框的左边缘完全对齐（跳过 Label 宽度），可以加 padding-left: 100px; */
+}
+
+.checkbox-row input[type="checkbox"] {
+    margin-right: 8px;         /* 框与文字的间距 */
+    width: 16px;               /* 固定框的大小 */
+    height: 16px;
+    cursor: pointer;
+    accent-color: #3498db;     /* 选中时的颜色 */
+}
+
+.checkbox-row label {
+    width: auto !important;    /* 取消全局 label 的 100px 宽度限制 */
+    margin: 0 !important;      /* 取消全局 margin */
+    font-weight: normal;
+    cursor: pointer;
+    text-align: left;          /* 文字左对齐 */
+}
 
 /* ========================================
    5. 响应式设计：手机适配
@@ -303,11 +342,10 @@ form p {
     }
 
     .center-group {
+
         display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 20px;
+        justify-content: center; /* 手机端整体居中 */
+        align-items: center;     /* 垂直对齐 */
     }
 
     .center-group label {
@@ -329,12 +367,19 @@ form p {
         margin: 0; /* 清除所有外边距 */
     }
 
+    .checkbox-row {
+        justify-content: flex-start; /* 手机端也强制左对齐 */
+        padding-left: 0;             /* 确保没有奇怪的缩进 */
+        margin-left: 0;
+    }
+    
+    .checkbox-row label {
+        text-align: left !important;
+    }
     form p {
         text-align: center;
         margin-top: 15px;
     }
-
-
 
     p a {
         display: inline-block;
