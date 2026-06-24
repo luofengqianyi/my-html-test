@@ -1,277 +1,151 @@
-/* ========================================
-   1. 全局样式 - 页面整体风格
-   ======================================== */
-
+/* --- 基础设置 --- */
 body {
-    font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
-    background-color: #f0f4f8; /* 电脑端保持浅色背景，看着清爽 */
-    color: #2c3e50;
-    padding: 30px;
-    max-width: 900px;
-    margin: 0 auto;
+    font-family: "Microsoft YaHei", sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
 }
 
-/* ========================================
-   2. 标题与通用样式
-   ======================================== */
+.container {
+    width: 100%;
+    max-width: 500px;
+}
 
 h1 {
     text-align: center;
     color: #2c3e50;
-    font-size: 36px;
-    margin-bottom: 30px;
-    letter-spacing: 4px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-size: 28px;
+    margin-bottom: 20px;
 }
-
-hr {
-    margin: 40px 0 30px 0;
-    border: none;
-    height: 2px;
-    background: linear-gradient(to right, transparent, #bdc3c7, transparent);
-}
-
-p {
-    text-align: center;
-    font-size: 16px;
-}
-
-p a {
-    color: #3498db;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-}
-
-p a:hover {
-    background-color: #3498db;
-    color: #ffffff;
-}
-
-p:last-child {
-    margin-top: 20px;
-    color: #95a5a6;
-    font-size: 14px;
-}
-
-/* ========================================
-   3. 表单容器
-   ======================================== */
 
 form {
-    max-width: 600px;
-    margin: 0 auto;
     background-color: #ffffff;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 35px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-form h2 {
-    color: #2c3e50;
-    font-size: 20px;
-    margin: 20px 0 15px 0;
-    padding-bottom: 8px;
-    border-bottom: 3px solid #3498db;
+/* --- 表单核心布局 (Flexbox) --- */
+.form-item {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    margin-bottom: 20px;
 }
 
-/* ========================================
-   4. 电脑端核心布局：Label 与 Input 并排
-   ======================================== */
-
-/* 默认 Label 样式：固定宽度，右对齐，与输入框并排 */
-label {
-    display: inline-block;
-    width: 100px;
-    text-align: right;       /* 文字靠右，紧贴输入框 */
+/* 左侧标签固定宽度 */
+.form-item > label {
+    width: 90px;
+    text-align: right;
+    margin-right: 15px;
     font-weight: bold;
-    color: #2c3e50;
-    margin-right: 15px;      /* 与输入框的间距 */
-    vertical-align: middle;  /* 垂直居中 */
+    flex-shrink: 0;
 }
 
-/* 所有输入框通用样式 */
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="number"],
-input[type="date"],
-select,
-textarea {
-    width: calc(100% - 135px); /* 总宽减去 label宽度和margin */
-    padding: 10px 14px;
-    border: 2px solid #dce4ec;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-    background-color: #fafbfc;
-    vertical-align: middle;
+/* 右侧输入区占满剩余空间 */
+.input-box {
+    flex: 1;
 }
 
-/* 输入框焦点效果 */
-input:focus, select:focus, textarea:focus {
-    outline: none;
+/* 文本输入框样式 */
+.input-box input[type="text"],
+.input-box input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dcdfe6;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.input-box input[type="text"]:focus,
+.input-box input[type="password"]:focus {
     border-color: #3498db;
-    background-color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+    outline: none;
 }
 
-/* ========================================
-   5. 特殊组件：复选框、单选框、按钮组
-   ======================================== */
-
-/* “记住我”专用行：左对齐，不受全局 label 宽度影响 */
-.checkbox-row {
-    display: flex;
+/* 行内元素（单选、复选框）对齐 */
+.inline-label {
+    display: inline-flex;
     align-items: center;
-    justify-content: flex-start; /* 左对齐 */
-    margin-bottom: 0px;
-    margin-left: 115px;          /* 关键：缩进量 = label宽度(100) + margin(15)，使其与输入框左侧对齐 */
-}
-
-.checkbox-row input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-    accent-color: #3498db;
+    margin-right: 15px;
     cursor: pointer;
-}
-
-.checkbox-row label {
-    width: auto !important;
-    margin: 0 !important;
-    text-align: left !important;
-    font-weight: normal;
-    cursor: pointer;
-}
-
-/* 注册页的“性别/爱好”居中组 */
-.center-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-    margin-left: 0; /* 重置缩进 */
-}
-
-.center-group label {
-    width: auto;
-    margin: 0;
-    text-align: left;
     font-weight: normal;
 }
-
-/* 协议确认行（注册页） */
-form p {
-    margin: 8px 0 5px 0;
-    font-weight: bold;
-    color: #2c3e50;
-    text-align: left;
-    padding-left: 115px; /* 同样缩进，与输入框对齐 */
-}
-/* 针对协议行的特殊处理，因为它是 input + label 直接写在 form 下 */
-input[type="checkbox"][name="agree"] {
-    margin-right: 8px;
-    accent-color: #3498db;
-}
-/* 协议行的 label 需要重置 */
-input[type="checkbox"][name="agree"] + label {
-    width: auto;
-    font-weight: normal;
+.inline-label input {
+    margin: 0 5px 0 0;
 }
 
-/* 按钮组 */
+/* 空出左侧 Label 宽度的特殊行（如：记住我） */
+.offset {
+    padding-left: 105px; /* 90px 标签宽度 + 15px 边距 */
+}
+
+/* --- 按钮样式 --- */
 .button-group {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin-top: 30px;
-    margin-left: 0;
 }
 
 button {
-    padding: 12px 30px;
+    padding: 10px 25px;
+    font-size: 15px;
     border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: bold;
+    border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    font-weight: bold;
+    transition: background-color 0.2s;
 }
 
-button[type="submit"] { background-color: #3498db; color: white; }
-button[type="submit"]:hover { background-color: #2980b9; transform: translateY(-2px); }
+.btn-primary { background-color: #3498db; color: white; }
+.btn-primary:hover { background-color: #2980b9; }
 
-button[type="reset"] { background-color: #e74c3c; color: white; }
-button[type="reset"]:hover { background-color: #c0392b; transform: translateY(-2px); }
+.btn-secondary { background-color: #e4e7ed; color: #606266; }
+.btn-secondary:hover { background-color: #dcdfe6; }
 
-button[type="button"] { background-color: #95a5a6; color: white; }
-button[type="button"]:hover { background-color: #7f8c8d; transform: translateY(-2px); }
+/* --- 底部链接 --- */
+.footer-links {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 14px;
+}
+.footer-links a { color: #3498db; text-decoration: none; margin: 0 5px;}
+.footer-links a:hover { text-decoration: underline; }
+.copyright { color: #999; margin-top: 10px; font-size: 13px; }
 
 /* ========================================
-   6. 响应式设计：手机适配 (max-width: 600px)
+   移动端自适应排版 (手机屏幕 < 600px)
    ======================================== */
-
 @media (max-width: 600px) {
-    body {
-        padding: 15px;
-        background-color: #f0f4f8; /* 手机端也保持浅色，或改为你喜欢的深色 */
+    .form-item {
+        flex-direction: column; /* 改为上下排列 */
+        align-items: flex-start;
     }
-
-    form {
-        padding: 20px 15px;
+    
+    .form-item > label {
         width: 100%;
-        box-shadow: none; /* 手机端去掉阴影更清爽 */
+        text-align: left;
+        margin-right: 0;
+        margin-bottom: 8px; /* 标签和输入框之间的间距 */
     }
-
-    h1 { font-size: 24px; }
-    form h2 { font-size: 18px; }
-
-    /* 【关键】手机端：Label 变身为块级元素，独占一行，居中或左对齐 */
-    label {
-        display: block !important;
-        width: 100% !important;
-        text-align: left !important; /* 手机端左对齐更易读 */
-        margin-right: 0 !important;
-        margin-bottom: 8px;
-        padding-left: 5px; /* 稍微缩进一点 */
-    }
-
-    /* 【关键】手机端：输入框占满屏幕 */
-    input[type="text"],
-    input[type="password"],
-    input[type="email"],
-    input[type="number"],
-    input[type="date"],
-    select,
-    textarea {
-        width: 100% !important;
-        box-sizing: border-box;
-        margin-bottom: 15px;
-    }
-
-    /* 隐藏电脑端的缩进，让所有内容贴边或统一间距 */
-    .checkbox-row, form p {
-        margin-left: 0 !important;
-        padding-left: 5px !important;
-        justify-content: flex-start;
-    }
-
-    .center-group {
-        justify-content: flex-start; /* 手机端选项左对齐 */
-        padding-left: 5px;
-    }
-
-    .button-group {
-        flex-direction: column;
+    
+    .input-box {
         width: 100%;
     }
-
+    
+    /* 手机端取消强制左侧留白缩进 */
+    .offset {
+        padding-left: 0;
+    }
+    
     .button-group button {
-        width: 100%;
-        margin-bottom: 10px;
+        width: 100%; /* 按钮在手机端撑满全宽更好按 */
     }
 }
