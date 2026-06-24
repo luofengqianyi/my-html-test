@@ -2,20 +2,13 @@
    1. 全局样式 - 页面整体风格
    ======================================== */
 
-/* 给整个页面设置字体和背景 */
 body {
     font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
-    /* 字体：微软雅黑 → 苹方 → 备用字体 */
     background-color: #f0f4f8;
-    /* 背景色：浅灰蓝色，保护眼睛 */
     padding: 30px;
-    /* 页面四周留白，不贴边 */
     max-width: 900px;
-    /* 最大宽度900px，太宽了不好看 */
     margin: 0 auto;
-    /* 居中显示（左右自动） */
 }
-
 
 /* ========================================
    2. 标题样式
@@ -23,231 +16,94 @@ body {
 
 h1 {
     text-align: center;
-    /* 文字居中 */
     color: #2c3e50;
-    /* 深蓝灰色 */
     font-size: 36px;
-    /* 字号36像素 */
     margin-bottom: 30px;
-    /* 下边距30px */
     letter-spacing: 4px;
-    /* 字间距4px，更大气 */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    /* 文字阴影：轻微立体感 */
 }
-
 
 /* ========================================
-   3. 表格核心样式（重点！）
-   ======================================== */
-
-/* 表格整体 */
-table {
-    width: 100%;
-    /* 表格宽度撑满父容器 */
-    border-collapse: collapse;
-    /* 关键！合并边框，去掉双线 */
-    background-color: #ffffff;
-    /* 白色背景 */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    /* 阴影：让表格浮起来 */
-    border-radius: 12px;
-    /* 圆角：12px，更柔和 */
-    overflow: hidden;
-    /* 圆角生效必须加这个 */
-}
-
-/* 所有单元格（包括表头和数据） */
-th, td {
-    padding: 14px 20px;
-    /* 内边距：上下14px，左右20px */
-    text-align: center;
-    /* 文字居中 */
-    border: 1px solid #dce4ec;
-    /* 边框：浅灰色，1px实线 */
-    font-size: 16px;
-    /* 字号16px */
-}
-
-/* 表头单元格（<th>）特殊样式 */
-th {
-    background-color: #3498db;
-    /* 背景色：亮蓝色 */
-    color: #ffffff;
-    /* 文字颜色：白色 */
-    font-weight: bold;
-    /* 加粗（默认就有，但写出来更清晰） */
-    font-size: 18px;
-    /* 表头字号稍大 */
-    letter-spacing: 1px;
-    /* 字间距1px */
-}
-
-/* 行表头（最左边那列"第1节"等） */
-tbody th {
-    background-color: #ecf0f1;
-    /* 背景色：浅灰色 */
-    color: #2c3e50;
-    /* 文字颜色：深色 */
-    font-weight: bold;
-}
-
-/* 普通单元格悬停效果（鼠标移上去变色） */
-td:hover {
-    background-color: #e8f4fd;
-    /* 悬停时背景变浅蓝色 */
-    transition: background-color 0.3s ease;
-    /* 过渡动画0.3秒 */
-}
-
-
-/* ========================================
-   4. 表格行交替颜色（斑马纹）
-   ======================================== */
-
-/* 偶数行（第2、4、6...行）背景色变化 */
-tbody tr:nth-child(even) {
-    background-color: #f8fafc;
-    /* 偶数列浅灰色背景 */
-}
-
-/* 奇数行（第1、3、5...行）保持白色 */
-tbody tr:nth-child(odd) {
-    background-color: #ffffff;
-}
-
-
-/* ========================================
-   5. 合并单元格的特殊处理
-   ======================================== */
-
-/* 使用rowspan合并的单元格，背景色突出显示 */
-td[rowspan] {
-    background-color: #fef9e7 !important;
-    /* 淡黄色背景 */
-    font-weight: bold;
-    color: #e67e22;
-    /* 橙色文字 */
-}
-
-/* 使用colspan合并的单元格 */
-td[colspan] {
-    background-color: #eafaf1 !important;
-    /* 淡绿色背景 */
-    font-weight: bold;
-    color: #27ae60;
-    /* 绿色文字 */
-}
-
-
-/* ========================================
-   6. 底部导航样式
+   3. 底部导航与通用段落样式
    ======================================== */
 
 hr {
     margin: 40px 0 30px 0;
-    /* 上下留白 */
     border: none;
-    /* 去掉默认边框 */
     height: 2px;
-    /* 高度2px */
     background: linear-gradient(to right, transparent, #bdc3c7, transparent);
-    /* 渐变分割线：两边透明，中间灰色 */
 }
 
-/* 底部导航容器 */
 p {
     text-align: center;
-    /* 居中 */
     font-size: 16px;
 }
 
-/* 导航链接样式 */
 p a {
     color: #3498db;
-    /* 蓝色文字 */
     text-decoration: none;
-    /* 去掉下划线 */
     padding: 8px 16px;
-    /* 内边距，让点击区域更大 */
     border-radius: 6px;
-    /* 圆角 */
     transition: all 0.3s ease;
-    /* 过渡动画 */
 }
 
-/* 导航链接悬停效果 */
 p a:hover {
     background-color: #3498db;
-    /* 背景变蓝色 */
     color: #ffffff;
-    /* 文字变白色 */
-    text-decoration: none;
-    /* 保持无下划线 */
 }
 
-/* 版权信息 */
 p:last-child {
     margin-top: 20px;
     color: #95a5a6;
-    /* 灰色文字 */
     font-size: 14px;
 }
 
 /* ========================================
-   7. 表单样式（Day 5新增）
+   4. 表单样式（登录与注册核心）
    ======================================== */
 
-/* 表单容器 */
 form {
     max-width: 600px;
-    /* 最大宽度600px */
     margin: 0 auto;
-    /* 居中 */
     background-color: #ffffff;
     padding: 40px;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
-/* 表单里的二级标题 */
+/* 注册页面的二级标题 */
 form h2 {
     color: #2c3e50;
     font-size: 20px;
     margin: 20px 0 15px 0;
     padding-bottom: 8px;
     border-bottom: 3px solid #3498db;
-    /* 下划线装饰 */
 }
 
-/* 让包裹选择项的 div 居中 */
+/* 让包裹选择项的 div 居中 (注册页用) */
 .center-group {
-    display: flex;             /* 使用弹性布局 */
-    justify-content: center;   /* 内容水平居中 */
-    align-items: center;       /* 内容垂直居中 */
-    gap: 15px;                 /* 每个选项之间的间距 */
-    margin-bottom: 15px;       /* 底部间距 */
-    flex-wrap: wrap;           /* 如果屏幕太窄，自动换行 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
-/* 确保里面的 label 不会强行占宽导致不居中 */
 .center-group label {
-    width: auto;               /* 取消固定宽度 */
-    margin-right: 0;           /* 取消右边距，由 gap 控制 */
-    font-weight: normal;       /* 可选：不加粗 */
+    width: auto;
+    margin-right: 0;
+    font-weight: normal;
 }
 
-/* 确保里面的 input 对齐 */
 .center-group input {
-    vertical-align: middle;    /* 垂直对齐 */
+    vertical-align: middle;
 }
 
-/* label标签 */
+/* label标签通用样式 */
 label {
     display: inline-block;
-    /* 变成块级元素，方便设置宽度 */
     width: 100px;
-    /* 固定宽度，让输入框对齐 */
     font-weight: bold;
     color: #2c3e50;
     margin-bottom: 5px;
@@ -257,12 +113,11 @@ label {
 input[type="radio"] + label,
 input[type="checkbox"] + label {
     width: auto;
-    /* 自动宽度，不固定 */
     font-weight: normal;
     margin-right: 20px;
 }
 
-/* 所有输入框 */
+/* 所有输入框通用样式 */
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -271,7 +126,6 @@ input[type="date"],
 select,
 textarea {
     width: calc(100% - 120px);
-    /* 宽度减掉label的宽度 */
     padding: 10px 14px;
     border: 2px solid #dce4ec;
     border-radius: 8px;
@@ -280,37 +134,46 @@ textarea {
     background-color: #fafbfc;
 }
 
-/* 输入框获得焦点时（点击时） */
+/* ========================================
+   按钮组通用样式 (支持任意数量按钮居中)
+   ======================================== */
+
+.button-group {
+    display: flex;             /* 启用弹性布局 */
+    justify-content: center;   /* 水平居中 */
+    align-items: center;       /* 垂直居中 */
+    gap: 15px;                 /* 按钮之间的间距 */
+    margin-top: 20px;          /* 与上方表单内容的间距 */
+    flex-wrap: wrap;           /* 如果按钮太多，自动换行 */
+}
+
+/* 确保按钮在组内不会过度拉伸 */
+.button-group button {
+    margin: 0;                 /* 清除之前的 margin-right，由 gap 控制间距 */
+    min-width: 100px;          /* 可选：让按钮最小宽度一致，更美观 */
+}
+
+/* 输入框获得焦点时 */
 input:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    /* 去掉默认的蓝色外框 */
     border-color: #3498db;
-    /* 边框变蓝色 */
     background-color: #ffffff;
     box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
-    /* 发光效果 */
 }
 
-/* 下拉菜单特殊样式 */
 select {
     width: calc(100% - 120px);
-    /* 和输入框一样宽 */
     cursor: pointer;
-    /* 鼠标变成小手 */
 }
 
-/* 多行文本框 */
 textarea {
     width: calc(100% - 120px);
     resize: vertical;
-    /* 只能垂直拖动大小，不能水平拖动 */
     font-family: inherit;
-    /* 继承父级字体 */
 }
 
-/* 文件上传按钮 */
 input[type="file"] {
     border: none;
     padding: 10px 0;
@@ -328,20 +191,19 @@ button {
     margin-right: 10px;
 }
 
-/* 提交按钮 */
+/* 提交按钮 (登录/注册) */
 button[type="submit"] {
     background-color: #3498db;
     color: #ffffff;
-}
+    }
 
 button[type="submit"]:hover {
     background-color: #2980b9;
     transform: translateY(-2px);
-    /* 向上浮起2px */
     box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
 }
 
-/* 重置按钮 */
+/* 重置按钮 (仅注册页用) */
 button[type="reset"] {
     background-color: #e74c3c;
     color: #ffffff;
@@ -353,19 +215,30 @@ button[type="reset"]:hover {
     box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
 }
 
+/* 取消按钮 (仅注册页用) */
+button[type="button"] {
+    background-color: #3ce7a5;
+    color: #ffffff;
+}
+
+button[type="button"]:hover {
+    background-color: #2b91c0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(164, 159, 159, 0.4);
+}
+
+
 /* 必填字段提示 */
 input:required {
     border-left: 4px solid #e74c3c;
-    /* 左边红色边框，提示必填 */
 }
 
-/* 必填字段校验失败时（浏览器自带校验） */
+/* 验证状态样式 */
 input:invalid:not(:placeholder-shown) {
     border-color: #e74c3c;
     background-color: #fdf2f2;
 }
 
-/* 必填字段校验通过时 */
 input:valid:not(:placeholder-shown) {
     border-color: #2ecc71;
 }
@@ -377,29 +250,42 @@ input[type="checkbox"][name="agree"] {
     margin-right: 8px;
     cursor: pointer;
     accent-color: #3498db;
-    /* 改变复选框颜色（现代浏览器支持） */
 }
 
-/* 性别/爱好分组样式 */
+/* 性别/爱好分组标题样式 */
 form p {
     margin: 8px 0 5px 0;
     font-weight: bold;
     color: #2c3e50;
 }
 
-/* 响应式设计：手机适配 */
+/* ========================================
+   5. 响应式设计：手机适配
+   ======================================== */
+
 @media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
     form {
-        padding: 20px;
-    }
-    
-    label {
-        display: block;
-        /* 手机上label独占一行 */
+        padding: 20px 15px;
         width: 100%;
-        margin-bottom: 5px;
     }
-    
+
+    h1, h2, form h2 {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    label {
+        display: block !important;
+        width: 100% !important;
+        text-align: center;
+        margin-bottom: 8px;
+        margin-right: 0;
+    }
+
     input[type="text"],
     input[type="password"],
     input[type="email"],
@@ -407,17 +293,58 @@ form p {
     input[type="date"],
     select,
     textarea {
-        width: 100%;
-        /* 手机上输入框占满宽度 */
+        width: 100% !important;
+        box-sizing: border-box;
+        margin-bottom: 15px;
     }
-    
-    textarea {
+
+    .center-group {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .center-group label {
+        display: inline-block !important;
+        width: auto !important;
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    form p {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .button-group {
+        flex-direction: column; /* 手机上改为垂直排列，按钮更长更易点击 */
         width: 100%;
     }
-    
-    button {
-        width: 100%;
-        /* 手机按钮占满宽度 */
+
+    .button-group button {
+        width: 100%;            /* 按钮占满屏幕宽度 */
         margin-bottom: 10px;
     }
+
+    p a {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px 10px;
+    }
 }
+
+/* 验证失败/成功的边框颜色增强 */
+input:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown),
+select:invalid:not(:placeholder-shown) {
+    border: 2px solid #ff4d4f;
+    background-color: #fff1f0;
+}
+
+input:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+    border: 2px solid #52c41a;
+}
+
