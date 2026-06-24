@@ -188,7 +188,6 @@ button {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-right: 10px;
 }
 
 /* 提交按钮 (登录/注册) */
@@ -271,6 +270,11 @@ form p {
     form {
         padding: 20px 15px;
         width: 100%;
+        box-sizing: border-box;
+    }
+
+    form br {
+        display: none;
     }
 
     h1, h2, form h2 {
@@ -300,7 +304,7 @@ form p {
 
     .center-group {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         flex-wrap: wrap;
         gap: 10px;
         margin-bottom: 20px;
@@ -312,21 +316,25 @@ form p {
         text-align: left;
         margin-bottom: 0;
     }
+    
+    .button-group {
+        flex-direction: column; /* 手机上改为垂直排列，按钮更长更易点击 */
+        width: 100%;
+        gap: 10px; /* 使用 gap 控制按钮间距 */
+        margin-top: 20px;
+    }
+
+    .button-group button {
+        width: 100%;            /* 按钮占满屏幕宽度 */
+        margin: 0; /* 清除所有外边距 */
+    }
 
     form p {
         text-align: center;
         margin-top: 15px;
     }
 
-    .button-group {
-        flex-direction: column; /* 手机上改为垂直排列，按钮更长更易点击 */
-        width: 100%;
-    }
 
-    .button-group button {
-        width: 100%;            /* 按钮占满屏幕宽度 */
-        margin-bottom: 10px;
-    }
 
     p a {
         display: inline-block;
