@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>📝 用户注册</h1>
+
+    <form action="#" method="get">
+        
+        <!-- ====== 1. 基本信息 ====== -->
+        <h2>基本信息</h2>
+        
+        <!-- 用户名 -->
+        <label for="username">用户名：</label>
+        <input type="text" id="username" name="username" placeholder="请输入用户名（至少3个字符）" required>
+        <br><br>
+        
+        <!-- 密码 -->
+        <label for="password">密码：</label>
+        <input type="password" id="password" name="password" placeholder="请输入密码" required>
+        <br><br>
+        
+        <!-- 确认密码 -->
+        <label for="confirm">确认密码：</label>
+        <input type="password" id="confirm" name="confirm" placeholder="请再次输入密码">
+        <br><br>
+        
+        <!-- 邮箱 -->
+        <label for="email">电子邮箱：</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com">
+        <br><br>
+        
+        <!-- 年龄（数字输入框） -->
+        <label for="age">年龄：</label>
+        <input type="number" id="age" name="age" min="1" max="120" placeholder="请输入年龄">
+        <br><br>
+        
+        <!-- 生日（日期选择器） -->
+        <label for="birthday">生日：</label>
+        <input type="date" id="birthday" name="birthday">
+        <br><br>
+
+        <hr>
+
+        <!-- ====== 2. 选择项 ====== -->
+        <h2>选择项</h2>
+        
+        <!-- 性别（单选按钮） -->
+        <p>性别：</p>
+        <div class="center-group">
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">男</label>
+            
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">女</label>
+            
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">其他</label>
+        </div>
+        
+        <!-- 爱好（复选框） -->
+        <p>爱好：</p>
+        <div class="center-group">
+            <input type="checkbox" id="sport" name="hobby" value="sport">
+            <label for="sport">运动</label>
+            
+            <input type="checkbox" id="music" name="hobby" value="music">
+            <label for="music">音乐</label>
+            
+            <input type="checkbox" id="reading" name="hobby" value="reading">
+            <label for="reading">阅读</label>
+            
+            <input type="checkbox" id="game" name="hobby" value="game">
+            <label for="game">游戏</label>
+        </div>
+
+        <!-- 城市（下拉菜单） -->
+        <label for="city">城市：</label>
+        <select id="city" name="city">
+            <option value="beijing">北京</option>
+            <option value="shanghai">上海</option>
+            <option value="guangzhou">广州</option>
+            <option value="shenzhen">深圳</option>
+            <option value="chengdu">成都</option>
+            <option value="wuhan" selected>武汉</option>
+        </select>
+        <br><br>
+
+        <hr>
+
+        <!-- ====== 3. 个人简介（多行文本框） ====== -->
+        <h2>个人简介</h2>
+        <label for="bio">请介绍一下你自己：</label>
+        <br>
+        <textarea id="bio" name="bio" rows="5" cols="50"
+         placeholder="请输入你的个人简介(最多200字)"></textarea>
+        <br><br>
+
+        <!-- ====== 4. 文件上传 ====== -->
+        <label for="avatar">上传头像：</label>
+        <input type="file" id="avatar" name="avatar">
+        <br><br>
+
+        <hr>
+
+        <!-- ====== 5. 协议确认 ====== -->
+        <input type="checkbox" id="agree" name="agree" required>
+        <label for="agree">我已阅读并同意《用户协议》</label>
+        <br><br>
+
+        <!-- ====== 6. 按钮组 ====== -->
+        <button type="submit">📤 注册</button>
+        <button type="reset">🗑️ 清空</button>
+
+    </form>
+
+    <hr>
+
+    <!-- 底部导航 -->
+    <p>
+        <a href="index.html" target="_blank">🏠 回到首页</a> &nbsp;|&nbsp;
+        <a href="schedule.html" target="_blank">📚 课程表</a> &nbsp;|&nbsp;
+        <a href="favorites.html">⭐ 收藏夹</a>
+    </p>
+
+    <p>&copy; 2026 ssg的学习空间</p>
+
+</body>
+</html>
