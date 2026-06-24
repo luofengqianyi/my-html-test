@@ -4,14 +4,15 @@
 
 body {
     font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
-    background-color: #f0f4f8;
+    background-color: #f0f4f8; /* 电脑端保持浅色背景，看着清爽 */
+    color: #2c3e50;
     padding: 30px;
     max-width: 900px;
     margin: 0 auto;
 }
 
 /* ========================================
-   2. 标题样式
+   2. 标题与通用样式
    ======================================== */
 
 h1 {
@@ -22,10 +23,6 @@ h1 {
     letter-spacing: 4px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
-
-/* ========================================
-   3. 底部导航与通用段落样式
-   ======================================== */
 
 hr {
     margin: 40px 0 30px 0;
@@ -59,7 +56,7 @@ p:last-child {
 }
 
 /* ========================================
-   4. 表单样式（登录与注册核心）
+   3. 表单容器
    ======================================== */
 
 form {
@@ -71,7 +68,6 @@ form {
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
-/* 注册页面的二级标题 */
 form h2 {
     color: #2c3e50;
     font-size: 20px;
@@ -80,53 +76,19 @@ form h2 {
     border-bottom: 3px solid #3498db;
 }
 
-/* 让包裹选择项的 div 居中 (注册页用) */
-.center-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-}
+/* ========================================
+   4. 电脑端核心布局：Label 与 Input 并排
+   ======================================== */
 
-.center-group label {
-    width: auto;
-    margin-right: 0;
-    font-weight: normal;
-}
-
-.center-group input {
-    vertical-align: middle;
-}
-
-/* label标签通用样式 */
+/* 默认 Label 样式：固定宽度，右对齐，与输入框并排 */
 label {
     display: inline-block;
     width: 100px;
+    text-align: right;       /* 文字靠右，紧贴输入框 */
     font-weight: bold;
     color: #2c3e50;
-    margin-bottom: 5px;
-}
-
-/* 特殊处理：单选框和复选框的label */
-input[type="radio"] + label,
-input[type="checkbox"] + label {
-    width: auto !important;
-    font-weight: normal;
-    margin-right: 20px;
-    display: inline-block;       /* 确保它是行内块 */
-    vertical-align: middle;      /* 关键：与前面的复选框垂直居中对齐 */
-    margin-left: 5px;            /* 与复选框之间留一点空隙 */
-    margin-bottom: 0;            /* 取消底部边距，防止错位 */
-}
-
-/* 确保复选框本身也垂直居中 */
-input[type="checkbox"],
-input[type="radio"] {
-    vertical-align: middle;
-    margin-right: 0;
-    margin-top: -2px;            /* 微调：有些浏览器复选框偏上，稍微往下拉一点 */
+    margin-right: 15px;      /* 与输入框的间距 */
+    vertical-align: middle;  /* 垂直居中 */
 }
 
 /* 所有输入框通用样式 */
@@ -137,61 +99,99 @@ input[type="number"],
 input[type="date"],
 select,
 textarea {
-    width: calc(100% - 120px);
+    width: calc(100% - 135px); /* 总宽减去 label宽度和margin */
     padding: 10px 14px;
     border: 2px solid #dce4ec;
     border-radius: 8px;
     font-size: 16px;
     transition: border-color 0.3s ease;
     background-color: #fafbfc;
+    vertical-align: middle;
 }
 
-/* ========================================
-   按钮组通用样式 (支持任意数量按钮居中)
-   ======================================== */
-
-.button-group {
-    display: flex;             /* 启用弹性布局 */
-    justify-content: center;   /* 水平居中 */
-    align-items: center;       /* 垂直居中 */
-    gap: 15px;                 /* 按钮之间的间距 */
-    margin-top: 20px;          /* 与上方表单内容的间距 */
-    flex-wrap: wrap;           /* 如果按钮太多，自动换行 */
-}
-
-/* 确保按钮在组内不会过度拉伸 */
-.button-group button {
-    margin: 0;                 /* 清除之前的 margin-right，由 gap 控制间距 */
-    min-width: 100px;          /* 可选：让按钮最小宽度一致，更美观 */
-}
-
-/* 输入框获得焦点时 */
-input:focus,
-select:focus,
-textarea:focus {
+/* 输入框焦点效果 */
+input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: #3498db;
     background-color: #ffffff;
     box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
 }
 
-select {
-    width: calc(100% - 120px);
+/* ========================================
+   5. 特殊组件：复选框、单选框、按钮组
+   ======================================== */
+
+/* “记住我”专用行：左对齐，不受全局 label 宽度影响 */
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 左对齐 */
+    margin-bottom: 0px;
+    margin-left: 115px;          /* 关键：缩进量 = label宽度(100) + margin(15)，使其与输入框左侧对齐 */
+}
+
+.checkbox-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    accent-color: #3498db;
     cursor: pointer;
 }
 
-textarea {
-    width: calc(100% - 120px);
-    resize: vertical;
-    font-family: inherit;
+.checkbox-row label {
+    width: auto !important;
+    margin: 0 !important;
+    text-align: left !important;
+    font-weight: normal;
+    cursor: pointer;
 }
 
-input[type="file"] {
-    border: none;
-    padding: 10px 0;
+/* 注册页的“性别/爱好”居中组 */
+.center-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    margin-left: 0; /* 重置缩进 */
 }
 
-/* 按钮通用样式 */
+.center-group label {
+    width: auto;
+    margin: 0;
+    text-align: left;
+    font-weight: normal;
+}
+
+/* 协议确认行（注册页） */
+form p {
+    margin: 8px 0 5px 0;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: left;
+    padding-left: 115px; /* 同样缩进，与输入框对齐 */
+}
+/* 针对协议行的特殊处理，因为它是 input + label 直接写在 form 下 */
+input[type="checkbox"][name="agree"] {
+    margin-right: 8px;
+    accent-color: #3498db;
+}
+/* 协议行的 label 需要重置 */
+input[type="checkbox"][name="agree"] + label {
+    width: auto;
+    font-weight: normal;
+}
+
+/* 按钮组 */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    margin-left: 0;
+}
+
 button {
     padding: 12px 30px;
     border: none;
@@ -202,133 +202,45 @@ button {
     transition: all 0.3s ease;
 }
 
-/* 提交按钮 (登录/注册) */
-button[type="submit"] {
-    background-color: #3498db;
-    color: #ffffff;
-    }
+button[type="submit"] { background-color: #3498db; color: white; }
+button[type="submit"]:hover { background-color: #2980b9; transform: translateY(-2px); }
 
-button[type="submit"]:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
-}
+button[type="reset"] { background-color: #e74c3c; color: white; }
+button[type="reset"]:hover { background-color: #c0392b; transform: translateY(-2px); }
 
-/* 重置按钮 (仅注册页用) */
-button[type="reset"] {
-    background-color: #e74c3c;
-    color: #ffffff;
-}
-
-button[type="reset"]:hover {
-    background-color: #c0392b;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
-}
-
-/* 取消按钮 (仅注册页用) */
-button[type="button"] {
-    background-color: #3ce7a5;
-    color: #ffffff;
-}
-
-button[type="button"]:hover {
-    background-color: #2b91c0;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(164, 159, 159, 0.4);
-}
-
-
-/* 必填字段提示 */
-input:required {
-    border-left: 4px solid #e74c3c;
-}
-
-/* 验证状态样式 */
-input:invalid:not(:placeholder-shown) {
-    border-color: #e74c3c;
-    background-color: #fdf2f2;
-}
-
-input:valid:not(:placeholder-shown) {
-    border-color: #2ecc71;
-}
-
-/* 协议复选框特殊样式 */
-input[type="checkbox"][name="agree"] {
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
-    cursor: pointer;
-    accent-color: #3498db;
-}
-
-/* 性别/爱好分组标题样式 */
-form p {
-    margin: 8px 0 5px 0;
-    font-weight: bold;
-    color: #2c3e50;
-}
-/* ========================================
-   登录页“记住我”专用样式
-   ======================================== */
-
-.checkbox-row {
-    display: flex;
-    align-items: center;       /* 垂直居中 */
-    justify-content: flex-start; /* 左对齐 */
-    margin-bottom: 20px;       /* 与下方按钮保持距离 */
-    /* 如果你希望它和输入框的左边缘完全对齐（跳过 Label 宽度），可以加 padding-left: 100px; */
-}
-
-.checkbox-row input[type="checkbox"] {
-    margin-right: 8px;         /* 框与文字的间距 */
-    width: 16px;               /* 固定框的大小 */
-    height: 16px;
-    cursor: pointer;
-    accent-color: #3498db;     /* 选中时的颜色 */
-}
-
-.checkbox-row label {
-    width: auto !important;    /* 取消全局 label 的 100px 宽度限制 */
-    margin: 0 !important;      /* 取消全局 margin */
-    font-weight: normal;
-    cursor: pointer;
-    text-align: left;          /* 文字左对齐 */
-}
+button[type="button"] { background-color: #95a5a6; color: white; }
+button[type="button"]:hover { background-color: #7f8c8d; transform: translateY(-2px); }
 
 /* ========================================
-   5. 响应式设计：手机适配
+   6. 响应式设计：手机适配 (max-width: 600px)
    ======================================== */
 
 @media (max-width: 600px) {
     body {
         padding: 15px;
+        background-color: #f0f4f8; /* 手机端也保持浅色，或改为你喜欢的深色 */
     }
 
     form {
         padding: 20px 15px;
         width: 100%;
-        box-sizing: border-box;
+        box-shadow: none; /* 手机端去掉阴影更清爽 */
     }
 
-    form br {
-        display: none;
-    }
+    h1 { font-size: 24px; }
+    form h2 { font-size: 18px; }
 
-    h1, h2, form h2 {
-        text-align: center;
-        font-size: 24px;
-    }
-
+    /* 【关键】手机端：Label 变身为块级元素，独占一行，居中或左对齐 */
     label {
         display: block !important;
         width: 100% !important;
-        text-align: center;
+        text-align: left !important; /* 手机端左对齐更易读 */
+        margin-right: 0 !important;
         margin-bottom: 8px;
-        margin-right: 0;
+        padding-left: 5px; /* 稍微缩进一点 */
     }
 
+    /* 【关键】手机端：输入框占满屏幕 */
     input[type="text"],
     input[type="password"],
     input[type="email"],
@@ -341,64 +253,25 @@ form p {
         margin-bottom: 15px;
     }
 
+    /* 隐藏电脑端的缩进，让所有内容贴边或统一间距 */
+    .checkbox-row, form p {
+        margin-left: 0 !important;
+        padding-left: 5px !important;
+        justify-content: flex-start;
+    }
+
     .center-group {
-
-        display: flex;
-        justify-content: center; /* 手机端整体居中 */
-        align-items: center;     /* 垂直对齐 */
+        justify-content: flex-start; /* 手机端选项左对齐 */
+        padding-left: 5px;
     }
 
-    .center-group label {
-        display: inline-block !important;
-        width: auto !important;
-        text-align: left;
-        margin-bottom: 0;
-    }
-    
     .button-group {
-        flex-direction: column; /* 手机上改为垂直排列，按钮更长更易点击 */
+        flex-direction: column;
         width: 100%;
-        gap: 10px; /* 使用 gap 控制按钮间距 */
-        margin-top: 20px;
     }
 
     .button-group button {
-        width: 100%;            /* 按钮占满屏幕宽度 */
-        margin: 0; /* 清除所有外边距 */
-    }
-
-    .checkbox-row {
-        justify-content: flex-start; /* 手机端也强制左对齐 */
-        padding-left: 0;             /* 确保没有奇怪的缩进 */
-        margin-left: 0;
-    }
-    
-    .checkbox-row label {
-        text-align: left !important;
-    }
-    
-    form p {
-        text-align: center;
-        margin-top: 15px;
-    }
-
-    p a {
-        display: inline-block;
-        margin: 5px;
-        padding: 5px 10px;
+        width: 100%;
+        margin-bottom: 10px;
     }
 }
-
-/* 验证失败/成功的边框颜色增强 */
-input:invalid:not(:placeholder-shown),
-textarea:invalid:not(:placeholder-shown),
-select:invalid:not(:placeholder-shown) {
-    border: 2px solid #ff4d4f;
-    background-color: #fff1f0;
-}
-
-input:valid:not(:placeholder-shown),
-textarea:valid:not(:placeholder-shown) {
-    border: 2px solid #52c41a;
-}
-
